@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Akbar AR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f6fb;--card:#fff;--ink:#16141f;--muted:#6b6780;--line:#e6e3ef;--accent:#7b2cff;--accent2:#ff2fa6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b16;--card:#17131f;--ink:#efecf7;--muted:#a19cb3;--line:#2a2436;--accent:#a87bff;--accent2:#ff5fbd}}
+:root[data-theme="dark"]{--bg:#0e0b16;--card:#17131f;--ink:#efecf7;--muted:#a19cb3;--line:#2a2436;--accent:#a87bff;--accent2:#ff5fbd}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:32px 16px 64px}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}
+h1{font-size:clamp(28px,6vw,44px);font-weight:800;margin:0;letter-spacing:-.02em}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--card)}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 #22c55e88;animation:p 2s infinite}
+@keyframes p{70%{box-shadow:0 0 0 8px #22c55e00}100%{box-shadow:0 0 0 0 #22c55e00}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:24px}
+video{width:100%;border-radius:12px;background:#000;display:block}
+h2{font-size:22px;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.item{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
+.item img{width:100%;display:block;cursor:zoom-in;aspect-ratio:16/10;object-fit:cover;background:#000}
+.item div{padding:10px 12px}
+.item b{display:block;font-size:14px}
+.item small{color:var(--muted);font-size:13px;display:block}
+.new{outline:2px solid var(--accent2)}
+#readme h1{display:none}
+#readme h2{margin-top:24px}
+#readme a{color:var(--accent)}
+#readme code{font-size:.9em;background:var(--bg);padding:1px 5px;border-radius:4px;word-break:break-all}
+dialog{border:0;padding:0;background:transparent;max-width:95vw}
+dialog::backdrop{background:#000c}
+dialog img{max-width:95vw;max-height:90vh;display:block;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Project <span>Akbar AR</span></h1>
+    <span class="live"><span class="dot"></span><span id="status">Live</span></span>
+  </header>
+
+  <section class="card">
+    <video src="WhatsApp%20Video%202026-11-02%20at%2011.33.37.mp4" controls loop muted playsinline></video>
+  </section>
+
+  <section class="card">
+    <h2>Progress</h2>
+    <div class="grid" id="progress"><small>Memuat…</small></div>
+  </section>
+
+  <section class="card" id="readme"><small>Memuat deskripsi…</small></section>
+</div>
+<dialog id="zoom" onclick="this.close()"><img alt=""></dialog>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+const POLL = 30000; let seen = null, lastReadme = "";
+const bust = u => u + (u.includes("?") ? "&" : "?") + "t=" + Date.now();
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+async function loadProgress(){
+  const r = await fetch(bust("progress/progress.json"), {cache:"no-store"}); if(!r.ok) throw 0;
+  const list = await r.json(), keys = list.map(x => x.image);
+  const fresh = seen ? keys.filter(k => !seen.has(k)) : [];
+  if (seen && !fresh.length && keys.length === seen.size) return;
+  seen = new Set(keys);
+  document.getElementById("progress").innerHTML = list.slice().reverse().map(x => `
+    <figure class="item${fresh.includes(x.image) ? " new" : ""}" style="margin:0">
+      <img loading="lazy" src="${esc(x.image)}" alt="${esc(x.title)}">
+      <div><b>${esc(x.title)}</b><small>${esc(x.date)}${x.caption ? " · " + esc(x.caption) : ""}</small></div>
+    </figure>`).join("");
+}
+async function loadReadme(){
+  const r = await fetch(bust("README.md"), {cache:"no-store"}); if(!r.ok) throw 0;
+  const md = await r.text(); if (md === lastReadme) return; lastReadme = md;
+  document.getElementById("readme").innerHTML = marked.parse(md);
+}
+async function tick(){
+  try { await Promise.all([loadProgress(), loadReadme()]);
+    document.getElementById("status").textContent = "Live · cek " + new Date().toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"});
+  } catch(e){ document.getElementById("status").textContent = "Offline, coba lagi…"; }
+}
+document.addEventListener("click", e => { if (e.target.matches(".item img")) { const d = document.getElementById("zoom"); d.querySelector("img").src = e.target.src; d.showModal(); } });
+tick(); setInterval(tick, POLL);
+</script>
+</body>
+</html>

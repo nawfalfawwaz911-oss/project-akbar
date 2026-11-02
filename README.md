@@ -33,3 +33,13 @@ Strukturnya terbagi tiga:
 - **Isi kotak keluar:** sinar dan benda-benda melayang keluar, dan isinya bisa diganti produk atau konten Akbar.
 
 Untuk versi final, logo eBay sebaiknya diganti dengan branding sendiri.
+
+## Progress live
+
+Halaman live: https://nawfalfawwaz911-oss.github.io/project-akbar/ — otomatis cek update setiap 30 detik.
+
+Tambah screenshot progress:
+
+```
+tools/add-progress.sh path/ke/screenshot.png "Judul" "Keterangan opsional"
+```

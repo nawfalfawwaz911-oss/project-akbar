@@ -1,0 +1,7 @@
+[
+  {"date":"2026-11-02","title":"Breakdown video referensi","caption":"16 frame dari video referensi (setiap ±0,34 detik) untuk memetakan alur animasinya.","image":"progress/2026-11-02-01-contact-sheet.jpg"},
+  {"date":"2026-11-02","title":"0,1 dtk: kotak diam + kursor masuk","caption":"Kotak kardus di latar sunburst ungu, kursor pixel masuk dari kiri.","image":"progress/2026-11-02-02-box-idle.jpg"},
+  {"date":"2026-11-02","title":"2,8 dtk: klik","caption":"Kursor mengeklik kotak, kotak sedikit mengempis.","image":"progress/2026-11-02-03-click.jpg"},
+  {"date":"2026-11-02","title":"3,1 dtk: tutup lepas","caption":"Tutup kotak melesat ke atas.","image":"progress/2026-11-02-04-lid-pop.jpg"},
+  {"date":"2026-11-02","title":"5,1 dtk: isi kotak keluar","caption":"Sinar kuning dan magenta, benda-benda melayang, teks \"Subscribe to the Channel Lol\".","image":"progress/2026-11-02-05-reveal.jpg"}
+]
