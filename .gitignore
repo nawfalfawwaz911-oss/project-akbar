@@ -1,0 +1,17 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+secrets*
+credentials*
+*api_key*
+*apikey*
+
+# Logs & OS junk
+*.log
+*Logs/
+.DS_Store
+Thumbs.db
