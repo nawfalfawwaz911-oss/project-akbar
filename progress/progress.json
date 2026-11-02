@@ -1,7 +1,50 @@
 [
-  {"date":"2026-11-02","title":"Breakdown video referensi","caption":"16 frame dari video referensi (setiap ±0,34 detik) untuk memetakan alur animasinya.","image":"progress/2026-11-02-01-contact-sheet.jpg"},
-  {"date":"2026-11-02","title":"0,1 dtk: kotak diam + kursor masuk","caption":"Kotak kardus di latar sunburst ungu, kursor pixel masuk dari kiri.","image":"progress/2026-11-02-02-box-idle.jpg"},
-  {"date":"2026-11-02","title":"2,8 dtk: klik","caption":"Kursor mengeklik kotak, kotak sedikit mengempis.","image":"progress/2026-11-02-03-click.jpg"},
-  {"date":"2026-11-02","title":"3,1 dtk: tutup lepas","caption":"Tutup kotak melesat ke atas.","image":"progress/2026-11-02-04-lid-pop.jpg"},
-  {"date":"2026-11-02","title":"5,1 dtk: isi kotak keluar","caption":"Sinar kuning dan magenta, benda-benda melayang, teks \"Subscribe to the Channel Lol\".","image":"progress/2026-11-02-05-reveal.jpg"}
+  {
+    "date": "2026-11-02",
+    "title": "Breakdown video referensi",
+    "caption": "16 frame dari video referensi (setiap ±0,34 detik) untuk memetakan alur animasinya.",
+    "image": "progress/2026-11-02-01-contact-sheet.jpg"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "0,1 dtk: kotak diam + kursor masuk",
+    "caption": "Kotak kardus di latar sunburst ungu, kursor pixel masuk dari kiri.",
+    "image": "progress/2026-11-02-02-box-idle.jpg"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "2,8 dtk: klik",
+    "caption": "Kursor mengeklik kotak, kotak sedikit mengempis.",
+    "image": "progress/2026-11-02-03-click.jpg"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "3,1 dtk: tutup lepas",
+    "caption": "Tutup kotak melesat ke atas.",
+    "image": "progress/2026-11-02-04-lid-pop.jpg"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "5,1 dtk: isi kotak keluar",
+    "caption": "Sinar kuning dan magenta, benda-benda melayang, teks \"Subscribe to the Channel Lol\".",
+    "image": "progress/2026-11-02-05-reveal.jpg"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "AE: recreate motion (contact sheet)",
+    "caption": "Kotak 3D dibangun manual di After Effects (solid 3D + kamera + lampu), gerak kursor/klik/tutup lepas/reveal disamakan dengan referensi. Render utama: ProRes 4444 background transparan.",
+    "image": "progress/2026-11-02-06-ae-recreation-sheet.jpg"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "AE: 3,15 dtk — tutup lepas",
+    "caption": "Tutup melesat ke atas dengan motion blur, glow merah di bukaan kotak.",
+    "image": "progress/2026-11-02-07-ae-lid-pop.jpg"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "AE: 4,8 dtk — reveal",
+    "caption": "Sinar kuning/magenta/gelap, telepon, kaos, drum (placeholder shape, nanti diganti aset Higgsfield) dan teks mengetik.",
+    "image": "progress/2026-11-02-08-ae-reveal.jpg"
+  }
 ]

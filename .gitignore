@@ -15,3 +15,8 @@ credentials*
 *Logs/
 .DS_Store
 Thumbs.db
+
+# Large / generated render files (ProRes alpha > GitHub 100MB limit)
+*.mov
+ae/stills/
+ae/probe.*
