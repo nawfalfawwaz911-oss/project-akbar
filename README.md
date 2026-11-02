@@ -49,7 +49,7 @@ tools/add-progress.sh path/ke/screenshot.png "Judul" "Keterangan opsional"
 - `ae/build.jsx` — script ExtendScript yang membangun semuanya di AE 2026: kotak 3D manual (solid 3D + lampu + 2 kamera), kursor pixel, klik, tutup lepas, sinar, item, dan teks mengetik. Gerak dicocokkan frame-per-frame dengan video referensi.
 - `ae/akbar-box.aep` — project AE. Comp **Main** = tanpa background (transparan), comp **Preview** = dengan background sunburst ungu.
 - `renders/akbar-box_preview.mp4` — preview H.264.
-- Render transparan (`renders/akbar-box_alpha.mov`, ProRes 4444 + alpha, 1920×1080, 30 fps, 5,4 dtk) tidak diunggah karena >100 MB.
+- Render transparan (`akbar-box_alpha.mov`, ProRes 4444 + alpha, 1920×1080, 30 fps, 5,4 dtk): https://github.com/nawfalfawwaz911-oss/project-akbar/releases/download/render-latest/akbar-box_alpha.mov (GitHub Release `render-latest`, selalu versi terbaru)
 
 Jalankan ulang: `osascript -e 'tell application "Adobe After Effects 2026" to DoScriptFile "<path>/ae/build.jsx"'`
 
