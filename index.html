@@ -33,6 +33,9 @@ h2{font-size:22px;margin:0 0 16px}
 #readme h2{margin-top:24px}
 #readme a{color:var(--accent)}
 #readme code{font-size:.9em;background:var(--bg);padding:1px 5px;border-radius:4px;word-break:break-all}
+.dl{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;font-weight:600;font-size:14px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 dialog{border:0;padding:0;background:transparent;max-width:95vw}
 dialog::backdrop{background:#000c}
 dialog img{max-width:95vw;max-height:90vh;display:block;border-radius:8px}
@@ -53,6 +56,12 @@ dialog img{max-width:95vw;max-height:90vh;display:block;border-radius:8px}
     <h2>Recreation di After Effects</h2>
     <video src="renders/akbar-box_preview.mp4" controls loop muted playsinline></video>
     <small style="color:var(--muted)">Preview dengan background. File utama untuk dipakai: ProRes 4444 transparan (tidak diunggah, &gt;100 MB).</small>
+    <div class="dl">
+      <a class="btn" href="https://github.com/nawfalfawwaz911-oss/project-akbar/raw/main/ae/akbar-box.aep" download>⬇ Download project AE (.aep)</a>
+      <a class="btn ghost" href="https://github.com/nawfalfawwaz911-oss/project-akbar/raw/main/ae/build.jsx" download>Script build.jsx</a>
+      <a class="btn ghost" href="https://github.com/nawfalfawwaz911-oss/project-akbar/commits/main/ae/akbar-box.aep" target="_blank" rel="noopener">Riwayat versi</a>
+    </div>
+    <small id="aeUpdated" style="color:var(--muted)"></small>
   </section>
 
   <section class="card">
@@ -91,6 +100,13 @@ async function tick(){
   } catch(e){ document.getElementById("status").textContent = "Offline, coba lagi…"; }
 }
 document.addEventListener("click", e => { if (e.target.matches(".item img")) { const d = document.getElementById("zoom"); d.querySelector("img").src = e.target.src; d.showModal(); } });
+async function aeInfo(){
+  try{ const r=await fetch("https://api.github.com/repos/nawfalfawwaz911-oss/project-akbar/commits?path=ae/akbar-box.aep&per_page=1",{cache:"no-store"});
+    const c=(await r.json())[0]; if(!c) return;
+    document.getElementById("aeUpdated").textContent="File AE terakhir diperbarui: "+new Date(c.commit.committer.date).toLocaleString("id-ID",{dateStyle:"medium",timeStyle:"short"});
+  }catch(e){}
+}
+aeInfo(); setInterval(aeInfo, 120000);
 tick(); setInterval(tick, POLL);
 </script>
 </body>

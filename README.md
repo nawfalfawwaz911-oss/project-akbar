@@ -52,3 +52,9 @@ tools/add-progress.sh path/ke/screenshot.png "Judul" "Keterangan opsional"
 - Render transparan (`renders/akbar-box_alpha.mov`, ProRes 4444 + alpha, 1920×1080, 30 fps, 5,4 dtk) tidak diunggah karena >100 MB.
 
 Jalankan ulang: `osascript -e 'tell application "Adobe After Effects 2026" to DoScriptFile "<path>/ae/build.jsx"'`
+
+### Download file AE
+
+- Project: https://github.com/nawfalfawwaz911-oss/project-akbar/raw/main/ae/akbar-box.aep
+- Riwayat versi: https://github.com/nawfalfawwaz911-oss/project-akbar/commits/main/ae/akbar-box.aep
+- Upload perubahan: `tools/sync-ae.sh`
